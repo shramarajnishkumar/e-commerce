@@ -1,0 +1,73 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block head %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Hi, welcome back!</h4>
+                    <span class="ml-1">Edit Product</span>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Edit Product</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Form</a></li>
+                    {{msg}}
+                </ol>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Edit Product</h4>
+            </div>
+            <div class="card-body">
+                <div class="basic-form">
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Name Of Product</label>
+                                <input type="text" class="form-control" name="name" placeholder="Name Of Product" value="{{pro.name}}" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Brand</label>
+                                <input type="text" class="form-control" name="brand" placeholder="Brand of Product" value="{{pro.brand}}" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Price</label>
+                                <input type="text" class="form-control" name="price" placeholder="Price of Product" value="{{pro.price}}" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>description</label>
+                                <input type="text" class="form-control" name="des" placeholder="Description Of Product" value="{{pro.description}}" required>
+                            </div>
+                            
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Category Of Product</label>
+                                <select id="inputState" name="category" class="form-control" style="color:black;">
+    
+                                    {% for one in cate %}
+                                    <option value="{{one.id}}">{{one.category}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Upload Shoes Image</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" name="img" class="custom-file-input">
+                                    <label class="custom-file-label">{{pro.image.url}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Edit Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}

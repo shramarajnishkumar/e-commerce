@@ -1,0 +1,116 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block head %}
+<div class="content-body">
+  <!-- row -->
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+          <h4 class="card-title">Enable PRODUCT</h4>
+        </div>
+          <div class="card-body">
+          <div class="table-responsive">
+              <table class="table mb-0">
+                  <thead>
+                      <tr>
+                          <th>image</th>
+                          <th>Name</th>
+                          <th>category</th>
+                          <th>brand</th>
+                          <th>price</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  {% for p in product_en %}
+                  <tbody>
+                      <tr>
+                          <td>
+                              <div class="round-img">
+                                  <a href=""><img width="35" src="{{p.image.url}}" alt=""></a>
+                              </div>
+                          </td>
+                          <td>{{p.name}}</td>
+                          <td>{{p.category}}</td>
+                          <td><span>{{p.brand}}</span></td>
+                          <td><span>₹{{p.price}}/-</span></td>
+                          
+                          <td><a href="{% url 'disable' p.id %}" class="badge badge-danger">disable</a>
+                          <td>
+                            <span>
+                              <a href="{% url 'editproduct' p.id %}" class="mr-4" data-toggle="tooltip"
+                                  data-placement="top" title="Edit"><i
+                                      class="fa fa-pencil color-muted"></i> </a>
+                              <a href="{% url 'productdelete' p.id %}" data-toggle="tooltip"
+                                  data-placement="top" title="Close"><i
+                                      class="fa fa-close color-danger"></i></a>
+                            </span>
+                          </td>
+                      </tr>
+                    </tbody>
+                    {% endfor %}
+                                          
+              </table>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+          <h4 class="card-title">Disable PRODUCT</h4>
+        </div>
+          <div class="card-body">
+          <div class="table-responsive">
+              <table class="table mb-0">
+                  <thead>
+                      <tr>
+                          <th>image</th>
+                          <th>Name</th>
+                          <th>category</th>
+                          <th>brand</th>
+                          <th>price</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  {% for p in product_dis %}
+                  <tbody>
+                      <tr>
+                          <td>
+                              <div class="round-img">
+                                  <a href="{{p.image.url}}" aria-disabled="true"><img width="35" src="{{p.image.url}}" alt=""></a>
+                              </div>
+                          </td>
+                          <td>{{p.name}}</td>
+                          <td>{{p.category}}</td>
+                          <td>{{p.brand}}</td>
+                          <td>₹{{p.price}}/-</td>
+                          
+                          <td><a href="{% url 'enable' p.id %}" class="badge badge-success">enable</a>
+                            <td>
+                              <span>
+                                <a href="{% url 'editproduct' p.id %}" class="mr-4" data-toggle="tooltip"
+                                    data-placement="top" title="Edit"><i
+                                        class="fa fa-pencil color-muted"></i> </a>
+                                <a href="{% url 'productdelete' p.id %}" data-toggle="tooltip"
+                                    data-placement="top" title="Close"><i
+                                        class="fa fa-close color-danger"></i></a>
+                              </span>
+                          
+                      </tr>
+                    </tbody>
+                    {% endfor %}
+                                          
+              </table>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

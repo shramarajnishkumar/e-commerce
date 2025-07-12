@@ -1,0 +1,152 @@
+{% extends 'head.html' %}
+{% load static %}
+{% block head %}
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+  
+  .wrapper {
+	  max-width: 350px;
+	  min-height: 500px;
+	  margin: 80px auto;
+	  padding: 40px 30px 30px 30px;
+	  background-color: #ecf0f3;
+	  border-radius: 15px;
+	  box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff
+  }
+  
+  .logo {
+	  width: 80px;
+	  margin: auto
+  }
+  
+  .logo img {
+	  width: 100%;
+	  height: 80px;
+	  object-fit: cover;
+	  border-radius: 50%;
+	  box-shadow: 0px 0px 3px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaa7, -8px -8px 15px #fff
+  }
+  
+  .wrapper .name {
+	  font-weight: 600;
+	  font-size: 1.4rem;
+	  letter-spacing: 1.3px;
+	  padding-left: 10px;
+	  color: #555
+  }
+  
+  .wrapper .form-field input,textarea {
+	  width: 100%;
+	  display: block;
+	  border: none;
+	  outline: none;
+	  background: none;
+	  font-size: 1.2rem;
+	  color: #666;
+	  padding: 10px 15px 10px 10px
+  }
+  
+  .wrapper .form-field {
+	  padding-left: 10px;
+	  margin-bottom: 20px;
+	  border-radius: 20px;
+	  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff
+  }
+  
+  .wrapper .form-field .fas {
+	  color: #555
+  }
+  
+  .wrapper .btn {
+	  box-shadow: none;
+	  width: 100%;
+	  height: 40px;
+	  background-color: #03A9F4;
+	  color: #fff;
+	  border-radius: 25px;
+	  box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
+	  letter-spacing: 1.3px
+  }
+  
+  .wrapper .btn:hover {
+	  background-color: #039BE5
+  }
+  
+  .wrapper a {
+	  text-decoration: none;
+	  font-size: 0.8rem;
+	  color: #03A9F4
+  }
+  
+  .wrapper a:hover {
+	  color: #039BE5
+  }
+  
+  @media(max-width: 380px) {
+	  .wrapper {
+		  margin: 30px 20px;
+		  padding: 40px 15px 15px 15px
+	  }
+  }
+  </style>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-md-12 pills">
+                <div class="bd-example bd-example-tabs">
+                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+                    <li class="nav-item">
+                      <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Give Review</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-expanded="true">Show Review</a>
+                    </li>
+                  </ul>
+
+                  <div class="tab-content" id="pills-tabContent">
+
+                    <div class="tab-pane border fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+                        <div class="wrapper">
+                            <p style="color: green; text-align: center;">{{ms}}</p>
+                            <div class="logo"> <img src="{{pro.image.url}}" alt=""> </div>
+                            <div class="text-center mt-4 name"> SCARPA </div>
+                            <form method="POST" >
+                            {% csrf_token %}
+                                <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="name" placeholder="Username" value="{{uid.name}}" readonly> </div>
+                                <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="pro" placeholder="Username" value="{{pro.name}}" readonly> </div>
+                                <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <textarea name="review" placeholder="Give Your Review"></textarea> </div> 
+                                <button type="submit" class="btn mt-3">Give Review</button>
+                            </form>
+                          </div>
+                    </div>
+
+                    <div class="tab-pane border fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
+                      <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                        <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+                    </div>
+
+                    <div class="tab-pane border fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
+                      <div class="row">
+                           <div class="col-md-8">
+                            <h3 class="head">{{creview}} Reviews</h3>
+                            <div class="review">
+                                {% for i in review %}
+                                <div class="user-img"  style="background-image: url({{i.user.pic.url}});"></div>
+                                <div class="desc">
+                                    <h4>
+                                        <span class="text-left">{{i.name}}</span>
+                                        <span class="text-right">{{i.date}}</span>
+                                    </h4>
+                                    <p>{{i.message}}</p>
+                                </div><br><br><br><br>
+                                {% endfor %}
+                            </div>
+                    </div>
+                  </div>
+                </div>
+         </div>
+        </div>
+    </div>
+{% endblock %}

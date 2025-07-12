@@ -1,0 +1,119 @@
+{% extends 'head.html' %}
+{% load static %}
+{% block head %}
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<p class="bread"><span><a href="{% url 'index' %}">Home</a></span> / <span>men</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="breadcrumbs-two">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="breadcrumbs-img" style="background-image: url({% static 'assets/images/cover-img-1.jpg' %})">
+							<h2>men's</h2>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="colorlib-product">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+						<h2>View men's Products</h2>
+					</div>
+				</div>
+				
+				
+				<div class="row row-pb-md">
+					<!-- {% for i in pro %}
+					{% if i.category.category == 'Man' %}
+					<div class="col-md-3 col-lg-3 mb-4 text-center">
+						<div class="product-entry border">
+							<a href="{% url 'product_details' i.id %}" class="prod-img">
+								<img src="{{i.image.url}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
+							</a>
+							<div class="desc">
+								<h2><a href="{% url 'men' %}">{{i.name}}</a></h2>
+								<span class="price">{{i.price}}</span>
+							</div>
+						</div>
+					</div>
+					{% endif %}
+					{% endfor %} -->
+					{% for i in pro %}
+					{% if i.category.category == 'Man' %}
+					<div class="col-md-3 col-lg-3 mb-4 text-center">
+						<div class="product-entry border">
+							<a href="{% url 'product_details' i.id %}" class="prod-img">
+								<img src="{{i.image.url}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
+							</a>
+							<div class="desc">
+								<h2><a href="">{{i.name}}</a></h2>
+								<span class="price">{{i.price}}</span>
+								<span class="price">{{i.brand}}</span>
+							</div>
+							<a href="{% url 'product_details' i.id %}"><button class="btn btn-primary">View Product</button></a>
+						</div>
+					</div>
+					{% endif %}
+					{% endfor %}
+				</div>
+				
+				
+					
+				<!-- <div class="row">
+					<div class="col-md-12 text-center">
+						<div class="block-27">
+		               <ul>
+			               <li><a href="#"><i class="ion-ios-arrow-back"></i></a></li>
+		                  <li class="active"><span>1</span></li>
+		                  <li><a href="#">2</a></li>
+		                  <li><a href="#">3</a></li>
+		                  <li><a href="#">4</a></li>
+		                  <li><a href="#">5</a></li>
+		                  <li><a href="#"><i class="ion-ios-arrow-forward"></i></a></li>
+		               </ul>
+		            </div>
+					</div>
+				</div> -->
+			</div>
+		</div>
+
+		<div class="colorlib-partner">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+						<h2>Trusted Partners</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col partner-col text-center">
+						<img src="{% static 'assets/images/brand-1.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+					</div>
+					<div class="col partner-col text-center">
+						<img src="{% static 'assets/images/brand-2.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+					</div>
+					<div class="col partner-col text-center">
+						<img src="{% static 'assets/images/brand-3.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+					</div>
+					<div class="col partner-col text-center">
+						<img src="{% static 'assets/images/brand-4.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+					</div>
+					<div class="col partner-col text-center">
+						<img src="{% static 'assets/images/brand-5.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% endblock %}
