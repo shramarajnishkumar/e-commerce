@@ -11,7 +11,7 @@ This is a Django-based e-commerce website for selling shoes. It provides functio
 
 ## Tech Stack
 
-*   **Framework:** Django 4.0.2
+*   **Framework:** Django 4.2.13
 *   **Language:** Python
 *   **Database:** SQLite3 (default)
 
@@ -21,42 +21,34 @@ Follow these steps to get the project up and running on your local machine.
 
 **1. Prerequisites:**
 
-*   Python 3.x
+*   Python 3.11+
 *   pip
 
 **2. Clone the repository:**
 
 ```bash
 git clone <repository-url>
-cd scarpa-shoes-master
+cd e-commerce
 ```
 
 **3. Create and activate a virtual environment:**
 
 ```bash
-# For Linux/macOS
-python3 -m venv myenv
-source myenv/bin/activate
-
 # For Windows
-python -m venv myenv
-myenv\Scripts\activate
+python -m venv venv
+venv\Scripts\activate
+
+# For Linux/macOS
+python3 -m venv venv
+source venv/bin/activate
 ```
 
 **4. Install dependencies:**
 
-It seems the `req.txt` file is not in the standard format. A typical `requirements.txt` for this project would look like this. You can create a new `requirements.txt` file with the following content:
-
-```
-Django==4.0.2
-asgiref==3.5.0
-# Add other necessary packages here
-```
-
-Then install the dependencies:
+The required packages are listed in `req.txt`. Install them using pip:
 
 ```bash
-pip install -r requirements.txt
+pip install -r req.txt
 ```
 
 **5. Apply database migrations:**
@@ -90,13 +82,14 @@ The application will be available at `http://127.0.0.1:8000/`.
 *   `media/`: Directory where uploaded product images are stored.
 *   `db.sqlite3`: The SQLite database file.
 *   `manage.py`: Django's command-line utility for administrative tasks.
+*   `req.txt`: A file listing the Python package dependencies.
 
 ## Configuration and Security
 
-**IMPORTANT:** The `mysite/settings.py` file contains sensitive information like `SECRET_KEY` and email credentials.
+**IMPORTANT:** The `mysite/settings.py` file may contain sensitive information like `SECRET_KEY` and email credentials.
 
-*   **SECRET_KEY:** Do not use the hardcoded `SECRET_KEY` in a production environment. It is recommended to load it from an environment variable.
-*   **Email Settings:** The `EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` are hardcoded. This is a significant security risk. For production, use environment variables or another secure method to handle these credentials.
+*   **SECRET_KEY:** Do not use a hardcoded `SECRET_KEY` in a production environment. It is recommended to load it from an environment variable.
+*   **Email Settings:** If `EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` are used, avoid hardcoding them. For production, use environment variables or another secure method to handle these credentials.
 
 Example for `settings.py`:
 
@@ -107,4 +100,3 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'your-default-secret-key')
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 ```
-

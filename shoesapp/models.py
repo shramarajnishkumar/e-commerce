@@ -1,8 +1,3 @@
-import email
-from msilib.schema import Class
-from pickle import TRUE
-from secrets import choice
-from unicodedata import name
 from django.db import models
 import random as r
 from myapp.models import *
