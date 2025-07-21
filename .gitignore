@@ -60,6 +60,7 @@ myenv/
 env/
 venv/
 ENV/
+.env
 
 # Sass cache
 .sass-cache/
